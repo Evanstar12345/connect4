@@ -104,8 +104,16 @@ function checkWinner() {
 
 function setWinner(r, c) {
     let winner = board[r][c] === playerRed ? "Red (AI)" : "Yellow (You)";
-
-
+    
+    
+    if (winner == "Red (AI)")
+    {
+            document.getElementById("winner").style.color = "red";
+    }
+    else
+    {
+        document.getElementById("winner").style.color = "yellow";
+    }
     
     document.getElementById("winner").innerText = `${winner} Wins!`;
     gameOver = true;

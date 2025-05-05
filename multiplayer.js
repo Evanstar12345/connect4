@@ -9,6 +9,8 @@ var rows = 6;
 var columns = 7;
 var currColumns = []; //keeps track of which row each column is at.
 
+var draw = false;
+
 window.onload = function() {
     setGame();
 }
@@ -78,7 +80,7 @@ function setPiece() {
 }
 
 function checkWinner() {
-     // horizontal
+     // horizontal check
      for (let r = 0; r < rows; r++) {
          for (let c = 0; c < columns - 3; c++){
             if (board[r][c] != ' ') {
@@ -90,7 +92,7 @@ function checkWinner() {
          }
     }
 
-    // vertical
+    // vertical check
     for (let c = 0; c < columns; c++) {
         for (let r = 0; r < rows - 3; r++) {
             if (board[r][c] != ' ') {
@@ -102,7 +104,7 @@ function checkWinner() {
         }
     }
 
-    // anti diagonal
+    // anti diagonal check
     for (let r = 0; r < rows - 3; r++) {
         for (let c = 0; c < columns - 3; c++) {
             if (board[r][c] != ' ') {
@@ -114,7 +116,7 @@ function checkWinner() {
         }
     }
 
-    // diagonal
+    // diagonal check
     for (let r = 3; r < rows; r++) {
         for (let c = 0; c < columns - 3; c++) {
             if (board[r][c] != ' ') {
@@ -125,13 +127,41 @@ function checkWinner() {
             }
         }
     }
+    
 
+    // check for a draw code, only looks at top row
+        var count= 0;
+        for (let c = 0; c < columns ; c++) 
+            {
+            if (board[0][c] != ' ') {
+                count++;
+                
+            }
+        if (count == 7)
+            {
+                draw = true;
+               setWinner(0,0); 
+               return;
+            }
+
+        
+    }
+    
+   
 
 }
 
 function setWinner(r, c) {
     let winner = document.getElementById("winner");
-    if (board[r][c] == playerRed) {
+    
+    if (draw)
+        {
+        winner.innerText = "It's a draw!";
+        winner.style.color = "white";   
+        draw = false;
+        }
+    
+    else if (board[r][c] == playerRed) {
         winner.innerText = "Red Wins";
         winner.style.color = "red";             
     } else {
