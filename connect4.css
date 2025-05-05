@@ -1,0 +1,74 @@
+#turnText
+{
+    color: red;
+    font-size: 300%;
+    
+
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    background: url("bgtestexport.png"), lightblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+
+/* board dimensions*/
+#board {
+    height: 540px;
+    width: 630px;
+    background-color: blue;
+    border: 10px solid navy;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    mix-blend-mode: hard-light;
+    position: relative;
+    margin-top: 85px;
+    
+}
+
+/* each circle on the board*/
+.tile {
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    /* Circle */
+    border-radius: 50%;
+    border: 5px solid navy;
+    background-color: rgb(128, 128, 128);
+}
+
+/* instead of a red piece, change to the desired image*/
+.red-piece {
+    background: url("checkersimgred.png"), red;
+    background-size: 70px;
+     
+}
+
+.yellow-piece {
+    background: url("checkersimgyellow.png"), yellow;
+    background-size: 70px;
+}
+
+
+* {   padding: 0;   margin: 0;}
+
+
+#winner
+{
+   color: white;
+   font-size: 40px;
+}
+
+
+#resetText
+{
+    color: white;
+}
